@@ -1,0 +1,45 @@
+:root{
+    font-family: sans-serif;
+}
+.container{
+  width: 100vw;
+  /* display: flex; */
+}
+.trip-card{
+
+    margin: 1em auto;
+    padding: 1em;
+    width: 40vw;
+    border: 1px solid rgb(0, 255, 157);
+    background-color: rgba(11, 252, 171, 0.549);
+    border-radius: 1em;
+}
+.trip-card img{
+    width: 40vw;
+    object-fit: contain;
+}
+.trip-detail-page{
+    /* border: 2px solid blue; */
+    
+}
+.trip-detail-page img{
+    width: 40vw;
+    object-fit: contain;
+}
+.trip-detail-page .box{
+    padding: 1em;
+    width: 40vw;
+    border: 1px solid rgb(123, 96, 42);
+    margin: 0 auto;
+}
+button,a{
+  margin: 0.6em;
+  font-size: 20px;
+  padding: 0.4em;
+  border: 1px solid rgb(12, 74, 107);
+  border-radius: 5px;
+  box-shadow: 1px 1px 1px;
+  background-color: rgba(0, 238, 255, 0.443);
+  text-decoration: none;
+
+}

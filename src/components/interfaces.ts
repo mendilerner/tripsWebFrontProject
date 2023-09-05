@@ -30,14 +30,49 @@ export interface Todo {
 };
 
 export interface tTrip {
-  id: number;
+  id: string;
   name: string;
   destination: string;
   startDate: string;
   endDate: string;
-  description: string;
-  price: number;
+  description?: string;
+  price?: number;
   image: string;
-  activities: string[];
+  activities?: string[];
 }
 
+export const defaultTrip: tTrip = {
+  "id": "1",
+  "name": "Beach Paradise",
+  "destination": "Hawaii, USA",
+  "startDate": "2023-10-01",
+  "endDate": "2023-10-10",
+  "description": "Enjoy the sun and surf on the beautiful beaches of Hawaii.",
+  "price": 1200,
+  "image": "hawaii.jpg",
+  "activities": ["Surfing", "Snorkeling", "Hiking"]
+}
+export const blankTrip: tTrip = {
+  "id": "",
+  "name": "",
+  "destination": "",
+  "startDate": "",
+  "endDate": "",
+  "description": "",
+  "price": 0,
+  "image": "",
+  "activities": []
+};
+
+
+// export interface TripsContextType{
+//   trips: tTrip[]
+// }
+export interface TripContextProviderProps {
+  children: React.ReactNode;
+  }
+
+export interface TripsContextType{
+  trips:tTrip[];
+  setTrips: React.Dispatch<React.SetStateAction<tTrip[]>>
+}

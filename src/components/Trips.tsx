@@ -1,8 +1,12 @@
-import React, { useState } from 'react'
+import React, { useState , useContext, Fragment} from 'react'
 import { Link } from 'react-router-dom'
+import { TripsContext } from './TripsContext'
+import TripCard from './TripCard'
 
 const Trips = () => {
-  const [show, setShowtrips] = useState('')
+  const context = useContext(TripsContext)
+  if(!context) return null
+  const {trips} = context
   return (
     <div>
     <nav style={{ margin: 10 }}>
@@ -12,16 +16,11 @@ const Trips = () => {
             <Link to="/newTripForm" style={{ padding: 5 }}>
             NewTripForm
             </Link>
-            <Link to="/updateTripForm" style={{ padding: 5 }}>
-            UpdateTripForm
-            </Link>
         </nav>
-        <div style={{ padding: 5 }}>
-        {[1,2,3].map((e,i) => (<div key={i}>
-          <Link to={`/trips/${e}`} style={{ padding: 5 }}>
-            {e}
-            </Link>
-    </div>))}
+        <div  className='container'>
+        {trips.map((trip) => (<Fragment key={trip.id}>
+            <TripCard tripData={trip}/>
+    </Fragment>))}
         </div>
     </div>
     

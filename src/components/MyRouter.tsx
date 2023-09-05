@@ -17,7 +17,7 @@ function MyRouter(): JSX.Element {
         <Route path="/login" element={<UserLogin />} />
         <Route path="/sighn-hp" element={<UserLogin />} />
         <Route path="/newTripForm" element={<NewTripForm />} />
-        <Route path="/updateTripForm" element={<UpdateTripForm name="1" />} />
+        <Route path="/updateTripForm/:id" element={<UpdateTripForm/>} />
         <Route path="/tripDetail" element={<UserRegistration />} />
         <Route path="/trips/:id" element={<TripDetail />} />
       </Routes>

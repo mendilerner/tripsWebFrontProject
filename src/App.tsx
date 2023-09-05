@@ -1,15 +1,14 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import TripsContextProvider from './components/TripsContext'
 import './styles.css'
 import MyRouter from './components/MyRouter'
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
-     <MyRouter/>
+      <TripsContextProvider>
+      <MyRouter/>
+      </TripsContextProvider>
     </>
   )
 }
