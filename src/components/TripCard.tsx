@@ -1,7 +1,7 @@
 import React , {Fragment, useContext} from 'react'
 import { tTrip } from './interfaces'
-import { Link, useNavigate } from 'react-router-dom'
-import { deleteTrip } from './Services'
+import { Link, useNavigate} from 'react-router-dom'
+import { deleteTrip, getToken } from './Services'
 import { TripsContext } from './TripsContext'
 const TripCard = ({tripData: {id, name, image, destination}}: {tripData :tTrip}) => {
   const context = useContext(TripsContext)
@@ -10,9 +10,18 @@ const TripCard = ({tripData: {id, name, image, destination}}: {tripData :tTrip})
   const navigate = useNavigate()
   const handleDelete = async (e:React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
       e.stopPropagation()
+      const token = getToken()
+      if (!token){
+         return navigate('/NotLoginMessage')
+      }
+      
       let conf = confirm('do you want to delete this trip')
       if (conf) {
-      const deletedTrip = await deleteTrip(id)
+      const deletedTrip = await deleteTrip(id, token as string)
+      if (deletedTrip === 401){
+        return navigate('/NotLoginMessage')
+      }
+
       if(deletedTrip){
         const updatedTrips = trips.filter((trip) => trip.id !== id)
         console.log(updatedTrips);

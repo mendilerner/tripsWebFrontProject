@@ -43,6 +43,7 @@ const TripDetail = () => {
                 )}
               </ul>
               <h3>price: {trip.price} $</h3>
+              <h3>from {trip.startDate} up to {trip.endDate}</h3>
               <button onClick={() => Navigate(`/updateTripForm/${trip.id}`)}>
                 update trip
               </button>

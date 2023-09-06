@@ -76,3 +76,9 @@ export interface TripsContextType{
   trips:tTrip[];
   setTrips: React.Dispatch<React.SetStateAction<tTrip[]>>
 }
+
+export interface tUserConnect{
+  email: string;
+  password: string;
+  role?:string;
+}

@@ -17,7 +17,7 @@ const Trips = () => {
             NewTripForm
             </Link>
         </nav>
-        <div  className='container'>
+        <div  className='containerCard'>
         {trips.map((trip) => (<Fragment key={trip.id}>
             <TripCard tripData={trip}/>
     </Fragment>))}
