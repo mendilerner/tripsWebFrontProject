@@ -102,3 +102,17 @@ button,a{
     min-width: 25vw;
 }
 
+.loading{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    border-radius: 2em;
+    font-size: 2em;
+    font-weight: 600;
+    font-family: sans-serif;
+    width: 32vw;
+    height: 30vh;
+    background-color: rgba(54, 240, 218, 0.771);
+    text-align: center;
+}

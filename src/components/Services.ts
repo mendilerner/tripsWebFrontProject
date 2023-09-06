@@ -115,14 +115,11 @@ export async function loginUser(
 }
 export async function registerUser(
   user: tUserConnect
-): Promise<{ message: string } | void> {
+): Promise<number | void> {
   try {
-    // const options = {
-    //   headers: { authorization: token },
-    // };
     console.log("from services: ", user);
     const response = await axios.post(`${BASE_URL}/auth/register`, user);
-    return response.data;
+    return response.status;
   } catch (error) {
     handleUnAuthuriseError(error);
   }

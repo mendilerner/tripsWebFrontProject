@@ -1,0 +1,18 @@
+.message{
+    margin: 0 auto;
+    padding-top: 10vh;
+    border-radius: 2em;
+    font-size: 2em;
+    font-weight: 500;
+    font-family: sans-serif;
+    width: 32vw;
+    height: 30vh;
+    background-color: rgba(15, 247, 7, 0.408);
+    text-align: center;
+}
+.message button{
+    margin: 0;
+}
+.error{
+    background-color: rgb(254, 111, 49);
+}

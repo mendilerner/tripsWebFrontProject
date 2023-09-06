@@ -3,7 +3,7 @@ import Home from "./Home";
 import { Link, useNavigate } from "react-router-dom";
 import { loginUser } from "./Services";
 import { tUserConnect } from "./interfaces";
-
+import Loading from "./Loading";
 const UserLogin = () => {
   const Navigate = useNavigate()
   const start: tUserConnect = { email: "", password: "" };
@@ -18,15 +18,19 @@ const UserLogin = () => {
   const handleSubmit = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault();
     const handleLogin = async () => {
-      const connectResult = await loginUser(values);
-      if (connectResult === 401) {
-        return null
-      };
-      if(connectResult === 200){
-        Navigate('/trips')
-    }
-      
-      console.log(connectResult);
+          setLoading(true);
+          const connectResult = await loginUser(values);
+          if (connectResult === 401) {
+            return null
+          };
+          if(connectResult === 200){
+            Navigate('/trips')
+        
+           
+          console.log(connectResult);
+       
+          }
+    
     };
     handleLogin();
   };
@@ -38,6 +42,7 @@ const UserLogin = () => {
           Home
         </Link>
       </nav>
+      {loading ? <Loading/> :
       <div>
         <form>
           <label htmlFor="email">email</label>
@@ -54,12 +59,11 @@ const UserLogin = () => {
             value={values.password}
             onChange={getHandler("password")}
           />
-
           <button type="submit" onClick={handleSubmit}>
             log in
           </button>
         </form>
-      </div>
+      </div>}
     </div>
   );
 };

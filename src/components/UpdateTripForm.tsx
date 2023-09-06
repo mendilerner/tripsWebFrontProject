@@ -4,8 +4,10 @@ import { blankTrip, tTrip } from "./interfaces";
 import { fetchTripData, updateTrip, getToken } from "./Services";
 import { TripForm } from "./TripForm/TripForm";
 import { TripsContext } from "./TripsContext";
+import Message from "./Message/Message";
 
 const UpdateTripForm = () => {
+  const [reqState, setReqState] = useState('before');
   const Navigate = useNavigate()
   const context = useContext(TripsContext);
   if (!context) return null;
@@ -43,6 +45,10 @@ const UpdateTripForm = () => {
       const updatedTrips = trips.filter((trip) => trip.id !== id);
       updatedTrips.push(result);
       setTrips(updatedTrips);
+      setReqState('successes');
+    }
+    else{
+      setReqState('error')
     }
   };
   useEffect(() => {
@@ -60,11 +66,16 @@ const UpdateTripForm = () => {
         <Link to="/trips" style={{ padding: 5 }}>
           trips
         </Link>
-      <TripForm
-        tripData={values}
-        getHandleSubmit={handleSubmit}
-        onChange={getHandler}
-      />
+        {reqState === 'before' && <TripForm
+          tripData={values}
+          getHandleSubmit={handleSubmit}
+          onChange={getHandler}
+        />
+      }
+      {reqState === 'successes' &&
+        <Message onClick={() => Navigate('/trips')} message="user updated successfully" passTo="to trips"/>}
+      {reqState === 'error' &&
+        <Message onClick={() => setReqState('before')} message="oops something got wrong" passTo="try again"/>}
     </div>
   );
 };
