@@ -22,7 +22,7 @@ const UserLogin = () => {
           const connectResult = await loginUser(values);
           if (connectResult === 401) {
             return null
-          };
+          }
           if(connectResult === 200){
             Navigate('/trips')
         

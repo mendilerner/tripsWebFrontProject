@@ -42,9 +42,9 @@ const UpdateTripForm = () => {
       return Navigate('/NotLoginMessage')
     }
     if (result) {
-      const updatedTrips = trips.filter((trip) => trip.id !== id);
-      updatedTrips.push(result);
-      setTrips(updatedTrips);
+      const tripIndex = trips.findIndex((trip) => trip.id === id)
+      trips[tripIndex] = result
+      setTrips(trips);
       setReqState('successes');
     }
     else{
